@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Cadastro</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <header>
+        <h2>Formulariode cadastro</h2>
+    </header>
+    <div class="container">
+        <form>
+            <!--Nome-->
+            <div class="from-campo">
+                <label for="name">Nome</label>
+                <input type="text" id="nome" name="nome">
+            </div>
+            <!--email-->
+            <div class="from-campo">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email">
+            </div>
+             <!--telefone-->
+             <div class="from-campo">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="telefone">
+            </div>
+             <!--CPF-->
+             <div class="from-campo">
+                <label for="cpf">CPF</label>
+                <input type="text" id="idcpf" name="idcpf">
+            </div>
+             <!--Endereço completo-->
+             <div class="from-campo">
+                <label for="Endereço">Endereço</label>
+                <input type="text" id="idEndereço" name="idEndereço">
+            </div>
+             <!--CEP-->
+             <div class="from-campo">
+                <label for="cep">CEP</label>
+                <input type="cep" id="idcep" name="idcep">
+            </div>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <footer>
+        <p>Roda pe da pagina</p>
+    </footer>
+    <!--importação do jQuery-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="./jquery.mask.min.js"></script>
+    <script src="./jquery.validate.min.js"></script>
+    <script src="./messages_pt_BR.min.js"></script>
+
+    <script>
+        $('#telefone').mask('(00)00000-0000',{placeholder: 'digite o numero com o ddd'});
+        
+        $('#idcpf').mask('000.000.000-00');
+
+        $('#idcep').mask('00000-000',{placeholder: 'digite o cep'});
+
+        //validando os campos do formulario
+        $('form').validate(
+            {
+                rules: {
+                    nome:{required: true},
+                    email:{required: true, email: true},
+                    telefone:{required: true}, 
+                    idcpf:{required: true},
+                    idEndereço:{required: true},
+                    idcep:{required: true}
+                },//constomizando a mensagem.
+                messages: {
+                    nome: 'ensira o nome'
+                }
+            }
+        );
+    </script>
+</body>
+</html>
